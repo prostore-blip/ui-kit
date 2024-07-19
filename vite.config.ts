@@ -13,6 +13,7 @@ export default defineConfig({
       entry: resolve(__dirname, join('src', 'index.ts')),
       fileName: 'index',
       formats: ['es', 'cjs'],
+      name: 'ui-kit',
     },
     minify: false,
     rollupOptions: {

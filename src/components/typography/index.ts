@@ -1,1 +1,1 @@
-export * from 'src/components/typography/typography.tsx'
+export * from './typography'

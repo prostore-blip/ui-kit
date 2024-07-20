@@ -1,7 +1,7 @@
 {
   "name": "@chrizzo/ui-kit",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.1",
     "clsx": "^2.1.1",
     "sass": "^1.77.6"
   }

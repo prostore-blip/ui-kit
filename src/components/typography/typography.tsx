@@ -1,42 +1,52 @@
-import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react'
+import type { PolymorphComponentPropsWithRef } from '../../types/polymorph'
+
+import { type ElementRef, type ElementType, type ReactNode, forwardRef } from 'react'
 
 import clsx from 'clsx'
 
 import s from './typography.module.scss'
 
-type TypographyProps<T extends ElementType> = {
-  as?: T
-  children: ReactNode
-  className?: string
+type CustomProps = {
+  textAlign?: 'center' | 'end' | 'inherit' | 'start'
   variant?:
-    | 'bold_text_14'
-    | 'bold_text_16'
     | 'h1'
     | 'h2'
     | 'h3'
     | 'large'
-    | 'medium_text_14'
-    | 'regular_link'
-    | 'regular_text_14'
-    | 'regular_text_16'
-    | 'semi_bold_small_text'
-    | 'small_link'
-    | 'small_text'
-} & ComponentPropsWithoutRef<T>
-
-export const Typography = <T extends ElementType = 'span'>({
-  as,
-  children,
-  className,
-  variant = 'regular_text_16',
-  ...rest
-}: TypographyProps<T>) => {
-  const classNames = clsx(s[variant], className)
-  const Component = as ?? 'p'
-
-  return (
-    <Component className={classNames} {...rest}>
-      {children}
-    </Component>
-  )
+    | 'regular14'
+    | 'regular16'
+    | 'regularBold14'
+    | 'regularBold16'
+    | 'regularLink'
+    | 'regularMedium14'
+    | 'small'
+    | 'smallLink'
+    | 'smallSemiBold'
 }
+
+type Props<T extends ElementType> = PolymorphComponentPropsWithRef<T, CustomProps>
+
+type TypographyComponent = <T extends ElementType = 'p'>(props: Props<T>) => ReactNode
+
+export const Typography: TypographyComponent = forwardRef(
+  <T extends ElementType = 'p'>(
+    {
+      asComponent,
+      children,
+      className,
+      textAlign = 'start',
+      variant = 'regular16',
+      ...rest
+    }: Props<T>,
+    ref: ElementRef<T>
+  ) => {
+    const Component = asComponent || 'p'
+    const finishClassName = clsx(s.typography, s[variant], className)
+
+    return (
+      <Component className={finishClassName} style={{ textAlign }} {...rest} ref={ref}>
+        {children}
+      </Component>
+    )
+  }
+)

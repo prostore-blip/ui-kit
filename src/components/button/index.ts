@@ -1,1 +1,1 @@
-export * from './button.tsx'
+export * from 'src/components/button/button.tsx'

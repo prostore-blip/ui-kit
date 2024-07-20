@@ -1,0 +1,129 @@
+.SelectWrapp {
+  display: flex;
+  flex-direction: column;
+}
+
+.SelectSmall {
+  .SelectTrigger {
+    width: 50px;
+    height: 24px;
+    padding: 0 2px 0 6px;
+
+    &[data-placeholder] {
+      font-size: var(--font-size-s);
+      line-height: var(--line-height-m);
+    }
+  }
+}
+
+.SelectLabel {
+  color: var(--color-light-900);
+
+  &Disabled {
+    color: var(--color-light-900);
+  }
+}
+
+.SelectTrigger {
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 210px;
+  height: 36px;
+  padding: 0 12px;
+
+  background-color: var(--color-dark-900);
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+  outline: none;
+
+  transition: all 0.3s;
+  color: var(--color-light-900);
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &:focus {
+    border-color: var(--color-accent-500);
+  }
+
+  &:active {
+    border-color: var(--color-light-100);
+    color: var(--color-light-100);
+  }
+
+  &:disabled {
+    cursor: auto;
+    border-color: var(--color-dark-300);
+
+    .SelectIcon {
+      svg {
+        path {
+          fill: var(--color-dark-300);
+        }
+      }
+    }
+
+    &[data-placeholder] {
+      color: var(--color-dark-300);
+    }
+
+    &:hover {
+      background-color: var(--color-dark-900);
+    }
+  }
+
+  &[data-placeholder] {
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-s);
+  }
+
+  &[data-state='open'] {
+    border-radius: 2px 2px 0 0;
+
+    .SelectIcon {
+      transform: scale(1, -1);
+    }
+  }
+}
+
+.SelectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.SelectContent {
+  overflow: hidden;
+
+  width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+
+  background-color: var(--color-dark-900);
+  border: 1px solid var(--color-dark-300);
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+
+  transition: all 0.3s;
+
+  &:active {
+    border-color: var(--color-dark-100);
+  }
+}
+
+.SelectScrollButton {
+  cursor: default;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 20px;
+
+  background-color: var(--color-accent-700);
+}

@@ -3,8 +3,8 @@ import { type ComponentPropsWithoutRef, type ElementRef, type ReactNode, forward
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import { CheckboxIndicator } from '@radix-ui/react-checkbox'
 
-import Check from '../../assets/icons/components/common/check'
-import { Typography } from '../../components/typography/typography'
+import { Typography } from '../'
+import { Check } from '../../assets/icons/components/check'
 
 export type CheckboxProps = {
   label?: ReactNode | string
@@ -14,7 +14,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
   ({ className, disabled, label, ...rest }, ref) => {
     return (
       <div>
-        <Typography asComponent={'label'} variant={'regular14'}>
+        <Typography as={'label'} variant={'regular14'}>
           <CheckboxRadix.Root ref={ref} {...rest}>
             <CheckboxIndicator>
               <Check />

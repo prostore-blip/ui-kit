@@ -1,3 +1,3 @@
-export * from './button/button'
-export * from './checkbox/checkbox'
-export * from './typography/typography'
+export * from './button'
+export * from './checkbox'
+export * from './typography'

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Eye, EyeOff } from '../../assets/icons'
 import { Button } from './button'
 
 const meta: Meta<typeof Button> = {
@@ -20,17 +19,9 @@ const meta: Meta<typeof Button> = {
       control: 'boolean',
       description: 'Disabling the button',
     },
-    endIcon: {
-      control: false,
-      description: 'The icon at the end of the component',
-    },
     ref: {
       control: false,
       description: 'Standard react ref prop',
-    },
-    startIcon: {
-      control: false,
-      description: 'The icon at the beginning of the component',
     },
     variant: {
       control: { type: 'radio' },
@@ -97,14 +88,5 @@ export const AsLink: Story = {
     children: 'Text button',
     href: '#',
     variant: 'text',
-  },
-}
-
-export const WithIcons: Story = {
-  args: {
-    children: 'User',
-    endIcon: <Eye />,
-    startIcon: <EyeOff />,
-    variant: 'secondary',
   },
 }

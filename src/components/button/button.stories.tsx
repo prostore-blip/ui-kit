@@ -4,7 +4,7 @@ import { Button } from './button'
 
 const meta: Meta<typeof Button> = {
   argTypes: {
-    asComponent: {
+    as: {
       control: false,
       description: 'Tag name (a, p, span, Link etc.)',
     },
@@ -84,7 +84,7 @@ export const FullWidth: Story = {
 
 export const AsLink: Story = {
   args: {
-    asComponent: 'a',
+    as: 'a',
     children: 'Text button',
     href: '#',
     variant: 'text',

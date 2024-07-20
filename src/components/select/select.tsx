@@ -13,44 +13,27 @@ import { SelectItem } from './selectItem/selectItem'
 
 export type SelectProps = {
   disabled?: boolean
-  id?: string
   items: number[] | string[]
   label?: string
   placeholder?: string
   variant?: 'large' | 'small'
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
-export function useLabelId(id?: string) {
-  const generatedId = useId()
-
-  if (!id) {
-    return generatedId
-  }
-
-  return id
-}
-
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
-  (
-    { disabled, id, items, label, placeholder, variant = 'large', ...restProps }: SelectProps,
-    ref
-  ) => {
-    const finalId = useLabelId(id)
-
+  ({ disabled, items, label, placeholder, variant = 'large', ...restProps }: SelectProps, ref) => {
     return (
       <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
         {label && (
           <Typography
             as={'label'}
             className={clsx(s.SelectLabel, disabled ? s.SelectLabelDisabled : '', s.SelectLabel)}
-            htmlFor={finalId}
             variant={'regular14'}
           >
             {label}
           </Typography>
         )}
         <SelectRadix.Root disabled={disabled} {...restProps}>
-          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={finalId}>
+          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger}>
             <SelectRadix.Value placeholder={placeholder}></SelectRadix.Value>
             <SelectRadix.Icon className={s.SelectIcon}>
               <ArrowDown />

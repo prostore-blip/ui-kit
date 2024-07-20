@@ -1,42 +1,37 @@
-import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react'
+import { type ComponentPropsWithoutRef, type ElementType } from 'react'
 
 import clsx from 'clsx'
 
 import s from './typography.module.scss'
 
-type TypographyProps<T extends ElementType> = {
+type TypographyComponent<T extends ElementType = 'p'> = {
   as?: T
-  children: ReactNode
-  className?: string
+  textAlign?: 'center' | 'end' | 'inherit' | 'start'
   variant?:
-    | 'bold_text_14'
-    | 'bold_text_16'
     | 'h1'
     | 'h2'
     | 'h3'
     | 'large'
-    | 'medium_text_14'
-    | 'regular_link'
-    | 'regular_text_14'
-    | 'regular_text_16'
-    | 'semi_bold_small_text'
-    | 'small_link'
-    | 'small_text'
+    | 'regular14'
+    | 'regular16'
+    | 'regularBold14'
+    | 'regularBold16'
+    | 'regularLink'
+    | 'regularMedium14'
+    | 'small'
+    | 'smallLink'
+    | 'smallSemiBold'
 } & ComponentPropsWithoutRef<T>
 
 export const Typography = <T extends ElementType = 'p'>({
   as,
-  children,
   className,
-  variant = 'regular_text_16',
+  textAlign = 'start',
+  variant = 'regular16',
   ...rest
-}: TypographyProps<T>) => {
-  const classNames = clsx(s[variant], className)
-  const Component = as ?? 'p'
+}: TypographyComponent<T>) => {
+  const Component = as || 'p'
+  const finishClassName = clsx(s.typography, s[variant], className)
 
-  return (
-    <Component className={classNames} {...rest}>
-      {children}
-    </Component>
-  )
+  return <Component className={finishClassName} style={{ textAlign }} {...rest} />
 }

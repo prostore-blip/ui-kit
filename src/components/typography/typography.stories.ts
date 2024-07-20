@@ -1,5 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { Typography } from 'src/components/typography/typography'
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { Typography } from './typography'
 
 const meta: Meta<typeof Typography> = {
   argTypes: {
@@ -51,7 +52,7 @@ const meta: Meta<typeof Typography> = {
     },
   },
   tags: ['autodocs'],
-  title: 'components/typography',
+  title: 'components/Typography',
 }
 
 export default meta

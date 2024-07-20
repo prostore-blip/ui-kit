@@ -13,15 +13,29 @@ import { SelectItem } from './selectItem/selectItem'
 
 export type SelectProps = {
   disabled?: boolean
+  id?: string
   items: number[] | string[]
   label?: string
   placeholder?: string
   variant?: 'large' | 'small'
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
+export function useLabelId(id?: string) {
+  const generatedId = useId()
+
+  if (!id) {
+    return generatedId
+  }
+
+  return id
+}
+
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
-  ({ disabled, items, label, placeholder, variant = 'large', ...restProps }: SelectProps, ref) => {
-    const id = useId()
+  (
+    { disabled, id, items, label, placeholder, variant = 'large', ...restProps }: SelectProps,
+    ref
+  ) => {
+    const finalId = useLabelId(id)
 
     return (
       <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
@@ -29,14 +43,14 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
           <Typography
             as={'label'}
             className={clsx(s.SelectLabel, disabled ? s.SelectLabelDisabled : '', s.SelectLabel)}
-            htmlFor={id}
+            htmlFor={finalId}
             variant={'regular14'}
           >
             {label}
           </Typography>
         )}
         <SelectRadix.Root disabled={disabled} {...restProps}>
-          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={id}>
+          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={finalId}>
             <SelectRadix.Value placeholder={placeholder}></SelectRadix.Value>
             <SelectRadix.Icon className={s.SelectIcon}>
               <ArrowDown />

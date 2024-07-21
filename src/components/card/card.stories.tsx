@@ -22,6 +22,7 @@ type Story = StoryObj<typeof meta>
 
 export const Light: Story = {
   args: {
+    as: 'div',
     children: (
       <p>
         <div>Light</div>
@@ -34,6 +35,7 @@ export const Light: Story = {
 
 export const Dark: Story = {
   args: {
+    as: 'div',
     children: (
       <div>
         <div
@@ -59,7 +61,7 @@ export const CardAsDiv: Story = {
   args: {
     as: 'div',
     children: 'div',
-    variant: 'dark',
+    variant: 'card',
   },
 }
 
@@ -67,6 +69,6 @@ export const CardAsSection: Story = {
   args: {
     as: 'section',
     children: 'section',
-    variant: 'dark',
+    variant: 'card',
   },
 }

@@ -13,21 +13,21 @@ export type CaptchaProps = {
   expiredTitle?: string
   isChecked?: boolean
   label?: string
+  load?: boolean
   onClick?: () => void
   theme?: 'dark' | 'light'
 } & ComponentPropsWithoutRef<'div'>
 
 export const Captcha = ({
   className,
-  error = true,
+  error = false,
   errorTitle = 'Please verify that you are not a robot',
-  expired = true,
+  expired = false,
   expiredTitle = 'Verifiction expired. Check the  again.',
   isChecked,
   label = `I'm not a robot`,
-  onClick = () => {
-    console.log(11)
-  },
+  load = false,
+  onClick = () => {},
   theme = 'light',
   ...restProps
 }: CaptchaProps) => {
@@ -44,6 +44,18 @@ export const Captcha = ({
       setIsLoad(false)
     }
   }, [expired])
+
+  useEffect(() => {
+    if (!isLoad && !load) {
+      setIsLoad(false)
+    }
+    if (!isLoad && load) {
+      setIsLoad(true)
+    }
+    if (isLoad && !load) {
+      setIsLoad(false)
+    }
+  }, [load])
 
   return (
     <div className={classNames} {...restProps}>

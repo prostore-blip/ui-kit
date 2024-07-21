@@ -6,8 +6,7 @@ import clsx from 'clsx'
 import s from './select.module.scss'
 import sItem from './selectItem/selectItem.module.scss'
 
-import { ArrowDown } from '../../assets/icons/components'
-import { ArrowTop } from '../../assets/icons/components'
+import { ArrowDown, ArrowTop } from '../../assets/icons/components'
 import { Typography } from '../typography'
 import { SelectItem } from './selectItem/selectItem'
 
@@ -21,22 +20,19 @@ export type SelectProps = {
 
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
   ({ disabled, items, label, placeholder, variant = 'large', ...restProps }: SelectProps, ref) => {
-    const id = useId()
-
     return (
       <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
         {label && (
           <Typography
             as={'label'}
             className={clsx(s.SelectLabel, disabled ? s.SelectLabelDisabled : '', s.SelectLabel)}
-            id={id}
             variant={'regular14'}
           >
             {label}
           </Typography>
         )}
         <SelectRadix.Root disabled={disabled} {...restProps}>
-          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={id}>
+          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger}>
             <SelectRadix.Value placeholder={placeholder}></SelectRadix.Value>
             <SelectRadix.Icon className={s.SelectIcon}>
               <ArrowDown />

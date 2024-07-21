@@ -19,10 +19,10 @@ export type CaptchaProps = {
 
 export const Captcha = ({
   className,
-  error = false,
+  error = true,
   errorTitle = 'Please verify that you are not a robot',
-  expired = false,
-  expiredTitle = 'Verifiction expired. Check the checkbox again.',
+  expired = true,
+  expiredTitle = 'Verifiction expired. Check the  again.',
   isChecked,
   label = `I'm not a robot`,
   onClick = () => {

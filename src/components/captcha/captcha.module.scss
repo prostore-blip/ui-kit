@@ -1,0 +1,92 @@
+.captcha, .captcha * {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.captcha {
+  width: 314px;
+  padding: 8px 7px 12px;
+  border: 1px solid transparent;
+
+  &.error {
+    border: 1px solid #ff0000;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    padding: 12px 20px;
+    position: relative;
+
+    .expiredTitle {
+      position: absolute;
+      font-size: 10px;
+      color: #ff0000;
+      width: 175px;
+      top: 4px;
+    }
+
+    .blockForInputLabel {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      gap: 13px;
+      position: relative;
+
+
+      .iconCaptchaChekd {
+        position: absolute;
+      }
+
+      .iconCaptchaLoad {
+        position: absolute;
+        left: 10px;
+        top: 15px;
+      }
+
+      input {
+        all: unset;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #B7B7B7;
+        border-radius: 1px;
+
+        &.checkboxTransparent {
+          border-color: transparent;
+        }
+      }
+    }
+
+    .figure {
+      height: 55px;
+      width: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .descriptionReCAPTCHA {
+        font-size: 8px;
+        margin-bottom: 2px;
+        margin-top: 7px;
+      }
+
+      .descriptionPrivacyTerms {
+        font-size: 6px;
+      }
+    }
+  }
+
+
+  .errorTitle {
+    margin-top: 13px;
+    font-size: 10px;
+    color: #ff0000;
+  }
+}
+.light {
+  color: black;
+}
+.dark {
+    color: white;
+}

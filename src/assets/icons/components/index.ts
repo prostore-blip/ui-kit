@@ -1,2 +1,5 @@
 export * from './arrowDown'
 export * from './arrowTop'
+export * from './captchaCheckd'
+export * from './captchaLoad'
+export * from './reCaptcha'

@@ -1,0 +1,9 @@
+.load {
+  animation: rotate 1s linear infinite;
+  transform-origin:0 13px;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(365deg); }
+}

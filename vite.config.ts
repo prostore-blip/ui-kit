@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
 // @ts-ignore
-import { devDependencies, peerDependencies } from './package.json'
+import { dependencies, devDependencies } from './package.json'
 
 export default defineConfig({
   build: {
@@ -20,7 +20,7 @@ export default defineConfig({
       // Exclude peer dependencies from the bundle to reduce bundle size
       rollupOptions: {
         external: [
-          ...Object.keys(peerDependencies),
+          ...Object.keys(dependencies),
           ...Object.keys(devDependencies),
           'react/jsx-runtime',
         ],

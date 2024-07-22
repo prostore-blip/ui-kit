@@ -16,19 +16,17 @@ export default defineConfig({
       name: 'ui-kit',
     },
     minify: false,
+    // Exclude peer dependencies from the bundle to reduce bundle size
     rollupOptions: {
-      // Exclude peer dependencies from the bundle to reduce bundle size
-      rollupOptions: {
-        external: [
-          ...Object.keys(dependencies),
-          ...Object.keys(devDependencies),
-          'react/jsx-runtime',
-        ],
-        output: {
-          dir: 'dist',
-          entryFileNames: '[name].js',
-          format: 'es',
-        },
+      external: [
+        ...Object.keys(dependencies),
+        ...Object.keys(devDependencies),
+        'react/jsx-runtime',
+      ],
+      output: {
+        dir: 'dist',
+        entryFileNames: '[name].js',
+        format: 'es',
       },
     },
     target: 'esnext',

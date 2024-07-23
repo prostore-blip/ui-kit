@@ -1,0 +1,30 @@
+.button {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark-900);
+
+  &:hover {
+    background: var(--color-dark-500);
+  }
+
+  svg {
+    fill: var(--color-light-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-700);
+  }
+}
+
+.disabled {
+  cursor: default;
+
+  svg {
+    fill: var(--color-dark-100);
+  }
+}

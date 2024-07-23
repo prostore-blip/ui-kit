@@ -11,7 +11,11 @@
 
     &[data-placeholder] {
       font-size: var(--font-size-s);
-      line-height: var(--line-height-m);
+
+    }
+    &span {
+      display: flex;
+      align-items: center;
     }
   }
 }
@@ -61,7 +65,9 @@
     border-color: var(--color-dark-300);
 
     .SelectIcon {
+      display: flex;
       svg {
+
         path {
           fill: var(--color-dark-300);
         }
@@ -70,6 +76,7 @@
 
     &[data-placeholder] {
       color: var(--color-dark-300);
+
     }
 
     &:hover {
@@ -80,6 +87,7 @@
   &[data-placeholder] {
     font-size: var(--font-size-m);
     line-height: var(--line-height-s);
+
   }
 
   &[data-state='open'] {
@@ -126,4 +134,7 @@
   height: 20px;
 
   background-color: var(--color-accent-700);
+}
+.qwerty {
+  display: none;
 }

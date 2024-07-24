@@ -2,45 +2,43 @@
 .navigationButton,
 .ellipsis {
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 24px;
   height: 24px;
   margin: 0 6px;
-
   color: var(--color-light-100);
-
   background-color: var(--color-dark-900);
   border: none;
+
+  &:hover {
+    background-color: var(--color-dark-100);
+  }
+
+  &:active:not(:disabled) {
+    color: var(--color-dark-900);
+    background-color: var(--color-light-100);
+    border-radius: 2px;
+    outline: none;
+  }
+}
+
+.navigationButton {
+  width: 16px;
+  height: 16px;
+
+  &:disabled {
+    cursor: not-allowed;
+    color: var(--color-dark-900);
+    background: transparent;
+  }
 }
 
 .activePageButton {
   color: var(--color-dark-900);
   background-color: var(--color-light-100);
   border-radius: 2px;
-}
-
-.paginationButton:hover,
-.navigationButton:hover {
-  background-color: var(--color-dark-100);
-}
-
-.paginationButton:active:not(:disabled),
-.paginationButton:focus:not(:disabled),
-.navigationButton:active {
-  color: var(--color-dark-900);
-  background-color: var(--color-light-100);
-  border-radius: 2px;
-  outline: none;
-}
-
-.navigationButton:disabled {
-  cursor: not-allowed;
-  color: var(--color-dark-900);
-  background: transparent;
 }
 
 .WrapperParinated {
@@ -51,4 +49,5 @@
 
 .WrapperDiv {
   display: flex;
+  align-items: center;
 }

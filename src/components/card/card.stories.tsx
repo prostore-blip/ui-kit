@@ -1,5 +1,6 @@
-import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import React from 'react'
 
 import { Card } from './card'
 
@@ -40,16 +41,14 @@ export const Dark: Story = {
       <div>
         <div
           style={{
-            display: 'flex',
             alignItems: 'center',
+            display: 'flex',
             justifyContent: 'space-between',
-            
           }}
         >
           <div>Dark</div>
           <span>X</span>
         </div>
-        
       </div>
     ),
     maxWidth: '644px',

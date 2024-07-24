@@ -60,6 +60,7 @@ export const Pagination = ({
         className={s.navigationButton}
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        type={'button'}
       >
         {'<'}
       </button>
@@ -78,6 +79,7 @@ export const Pagination = ({
               }
               key={page}
               onClick={() => handlePageChange(page)}
+              type={'button'}
             >
               <Typography as={'span'} variant={'regular14'}>
                 {page}
@@ -90,6 +92,7 @@ export const Pagination = ({
         className={s.navigationButton}
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
+        type={'button'}
       >
         {'>'}
       </button>

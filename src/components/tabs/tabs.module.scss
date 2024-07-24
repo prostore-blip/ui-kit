@@ -1,0 +1,79 @@
+.RadixTabsRoot {
+  display: flex;
+  background: var(--color-dark-700);
+}
+
+.RadixTabsList {
+}
+
+.RadixTabsTrigger {
+  box-sizing: border-box;
+  padding: 6px 24px;
+  padding-bottom: 0;
+
+  line-height: 150%;
+
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 2.5%;
+
+  &:hover {
+    cursor: pointer;
+    background: #73a4ff36;
+    transition: background-color 0.3s ease;
+  }
+
+  &:active {
+    padding-bottom: 0;
+    background: #73a4ff4f;
+    border: 1px solid var(--color-accent-500);
+    border-right: 1px solid var(--color-accent-500);
+  }
+
+  &:disabled {
+    cursor: default;
+    background: var(--color-dark-700);
+    
+  }
+
+  &:focus {
+    
+
+    border-top: 2px solid var(--color-accent-500);
+    border-right: 2px solid var(--color-accent-500);
+    border-bottom: 2px solid var(--color-accent-500);
+    border-left: 2px solid var(--color-accent-500);
+    border-radius: 5%;
+  }
+}
+
+.blue {
+  color: var(--color-accent-500);
+  border-bottom: 2px solid var(--color-accent-500);
+
+  &:active {
+    color: var(--color-accent-500);
+    border-bottom: 4px solid var(--color-accent-500);
+  }
+
+  &:disabled {
+    color: var(--color-accent-900);
+    border-bottom: 2px solid var(--color-accent-900);
+  }
+}
+
+.grey {
+  color: var(--color-dark-100);
+  border-bottom: 2px solid var(--color-dark-100);
+
+  &:active {
+    color: var(--color-dark-100);
+    border-bottom: 4px solid var(--color-accent-500);
+  }
+
+  &:disabled {
+    color: var(--color-dark-300);
+    border-bottom: 2px solid var(--color-dark-300)
+  }
+}

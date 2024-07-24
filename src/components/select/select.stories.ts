@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Russia, Usa } from '../../assets/icons'
 import { Select } from './select'
 
 const meta = {
@@ -11,21 +12,24 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const selectItems = ['1', '2', '3']
+const selectItems = [{ item: '1' }, { item: '2' }, { item: '3' }]
+const selectItemsWithIcons = [
+  { icon: Usa(), item: 'English' },
+  { icon: Russia(), item: 'Russian' },
+]
 
-const selectSmallItems = ['10', '20', '30']
+const selectSmallItems = [{ item: '10' }, { item: '20' }, { item: '30' }]
 
 export const SelectDefault: Story = {
   args: {
     items: selectItems,
-    placeholder: selectItems[0],
+    placeholder: selectItems[0].item,
   },
 }
 
 export const SelectSmall: Story = {
   args: {
     items: selectSmallItems,
-    placeholder: selectSmallItems[0],
     variant: 'small',
   },
 }
@@ -34,7 +38,6 @@ export const SelectDefaultWithLabel: Story = {
   args: {
     items: selectItems,
     label: 'Select-box',
-    placeholder: selectItems[0],
   },
 }
 
@@ -42,7 +45,6 @@ export const SelectDisabled: Story = {
   args: {
     disabled: true,
     items: selectItems,
-    placeholder: selectItems[0],
   },
 }
 
@@ -51,6 +53,11 @@ export const SelectWithLabelDisabled: Story = {
     disabled: true,
     items: selectItems,
     label: 'Select-box',
-    placeholder: selectItems[0],
+  },
+}
+export const SelectWithIcons: Story = {
+  args: {
+    items: selectItemsWithIcons,
+    label: 'Select-box',
   },
 }

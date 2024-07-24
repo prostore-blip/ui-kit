@@ -1,4 +1,4 @@
-import { type ComponentPropsWithoutRef, type ElementRef, forwardRef, useId } from 'react'
+import { type ComponentPropsWithoutRef, type ElementRef, ReactNode, forwardRef, useId } from 'react'
 
 import * as SelectRadix from '@radix-ui/react-select'
 import clsx from 'clsx'
@@ -6,22 +6,40 @@ import clsx from 'clsx'
 import s from './select.module.scss'
 import sItem from './selectItem/selectItem.module.scss'
 
-import { ArrowDown } from '../../assets/icons/components'
-import { ArrowTop } from '../../assets/icons/components'
+import { ArrowDown, ArrowTop } from '../../assets/icons/components'
 import { Typography } from '../typography'
 import { SelectItem } from './selectItem/selectItem'
 
+type ItemsType = {
+  icon?: ReactNode
+  item: number | string
+}
+
 export type SelectProps = {
   disabled?: boolean
-  items: number[] | string[]
+  items: ItemsType[]
   label?: string
-  placeholder?: string
+  placeholder?: ReactNode | string
   variant?: 'large' | 'small'
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
+
+const placeholderWithIcon = (
+  icon: ReactNode,
+  text: number | string,
+  variant: 'large' | 'small'
+) => (
+  <div style={{ alignItems: 'center', display: 'flex', gap: '12px' }}>
+    {icon && <div style={{ transform: 'translateY(1px)' }}>{icon}</div>}
+    <div className={variant === 'small' && icon ? s.qwerty : ''}>{text}</div>
+  </div>
+)
 
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
   ({ disabled, items, label, placeholder, variant = 'large', ...restProps }: SelectProps, ref) => {
     const id = useId()
+
+    const largePlaceholder =
+      items.length > 0 ? placeholderWithIcon(items[0].icon, items[0].item, variant) : placeholder
 
     return (
       <div className={clsx(s.SelectWrapp, variant === 'small' ? s.SelectSmall : '')}>
@@ -29,7 +47,7 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
           <Typography
             as={'label'}
             className={clsx(s.SelectLabel, disabled ? s.SelectLabelDisabled : '', s.SelectLabel)}
-            htmlFor={id}
+            id={id}
             variant={'regular14'}
           >
             {label}
@@ -37,7 +55,8 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
         )}
         <SelectRadix.Root disabled={disabled} {...restProps}>
           <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={id}>
-            <SelectRadix.Value placeholder={placeholder}></SelectRadix.Value>
+            <SelectRadix.Value placeholder={largePlaceholder} />
+
             <SelectRadix.Icon className={s.SelectIcon}>
               <ArrowDown />
             </SelectRadix.Icon>
@@ -52,11 +71,13 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
                   {items.map((item, index) => (
                     <SelectItem
                       className={clsx(variant === 'small' ? sItem.SelectItemSmall : '')}
+                      icon={item.icon}
                       key={index}
                       ref={ref}
-                      value={item.toString()}
+                      value={item.item.toString()}
+                      variant={variant}
                     >
-                      {item}
+                      {item.item}
                     </SelectItem>
                   ))}
                 </SelectRadix.Group>

@@ -1,4 +1,5 @@
 export * from './button'
 export * from './checkbox'
 export * from './select'
+export * from './textarea'
 export * from './typography'

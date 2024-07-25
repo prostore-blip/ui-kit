@@ -34,12 +34,9 @@
   &:disabled {
     cursor: default;
     background: var(--color-dark-700);
-    
   }
 
   &:focus {
-    
-
     border-top: 2px solid var(--color-accent-500);
     border-right: 2px solid var(--color-accent-500);
     border-bottom: 2px solid var(--color-accent-500);
@@ -74,6 +71,6 @@
 
   &:disabled {
     color: var(--color-dark-300);
-    border-bottom: 2px solid var(--color-dark-300)
+    border-bottom: 2px solid var(--color-dark-300);
   }
 }

@@ -1,8 +1,9 @@
+import type { FC } from 'react'
+
 import * as RadixTabs from '@radix-ui/react-tabs'
+import clsx from 'clsx'
 
 import s from './tabs.module.scss'
-import type { FC } from 'react'
-import clsx from 'clsx'
 
 export type TabType = {
   disabled?: boolean
@@ -20,7 +21,7 @@ export type TabsProps = {
   tabs: TabType[]
   // The controlled value of the tab to activate. Should be used in conjunction with onValueChange
   value?: string
-  variant: "blue" | "grey" 
+  variant: 'blue' | 'grey'
 }
 
 export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value, variant }) => {
@@ -31,10 +32,10 @@ export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value, 
       onValueChange={onValueChange}
       value={value}
     >
-      <RadixTabs.List className={clsx(s.RadixTabsList)} >
+      <RadixTabs.List className={clsx(s.RadixTabsList)}>
         {tabs.map(tab => (
           <RadixTabs.Trigger
-            className={clsx(s.RadixTabsTrigger,s[variant])}
+            className={clsx(s.RadixTabsTrigger, s[variant])}
             disabled={tab.disabled}
             key={tab.value}
             value={tab.value}

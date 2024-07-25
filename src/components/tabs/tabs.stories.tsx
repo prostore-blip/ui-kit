@@ -13,7 +13,6 @@ type Story = StoryObj<typeof meta>
 
 export const BaseTabBlueWithDisabled: Story = {
   args: {
-    variant: "blue",
     tabs: [
       { title: 'Tabs', value: 'Tabs' },
       { title: 'Tabs', value: 'Tabs' },
@@ -21,12 +20,12 @@ export const BaseTabBlueWithDisabled: Story = {
       { title: 'Tabs', value: 'Tabs' },
       { disabled: true, title: 'Tabs', value: 'Tabs' },
     ],
+    variant: 'blue',
   },
 }
 
 export const BaseTabGreyWithDisabled: Story = {
   args: {
-    variant: "grey",
     tabs: [
       { title: 'Tabs', value: 'Tabs' },
       { title: 'Tabs', value: 'Tabs' },
@@ -34,5 +33,6 @@ export const BaseTabGreyWithDisabled: Story = {
       { title: 'Tabs', value: 'Tabs' },
       { disabled: true, title: 'Tabs', value: 'Tabs' },
     ],
+    variant: 'grey',
   },
 }

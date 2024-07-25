@@ -1,36 +1,37 @@
-import { Meta, StoryObj } from "@storybook/react"
-import {TextArea} from "./textarea"
+import { Meta, StoryObj } from '@storybook/react'
+
+import { TextArea } from './textarea'
 
 const meta = {
-    component: TextArea,
-    tags: ['autodocs'],
-    title: 'Components/Textarea',
-  } satisfies Meta<typeof TextArea>
+  component: TextArea,
+  tags: ['autodocs'],
+  title: 'Components/Textarea',
+} satisfies Meta<typeof TextArea>
 
-  export default meta
-  type Story = StoryObj<typeof meta>
+export default meta
+type Story = StoryObj<typeof meta>
 
-  export const TextAreaDefault: Story = {
-    args: {
-        placeholder: 'Texr Area',
-        height: "100px",
-        width: "300px", 
-    }
-  }
-  export const TextAreaDisablet: Story = {
-    args: {
-        placeholder: 'Texr Area',
-        height: "100px",
-        width: "250px", 
-        disabled: true,
-    }
-  }
+export const TextAreaDefault: Story = {
+  args: {
+    height: '100px',
+    placeholder: 'Texr Area',
+    width: '300px',
+  },
+}
+export const TextAreaDisablet: Story = {
+  args: {
+    disabled: true,
+    height: '100px',
+    placeholder: 'Texr Area',
+    width: '250px',
+  },
+}
 
-  export const TextAreaError: Story = {
-    args: {
-        placeholder: 'Texr Area',
-        height: "100px",
-        width: "250px", 
-        error: true
-    }
-  }
+export const TextAreaError: Story = {
+  args: {
+    error: true,
+    height: '100px',
+    placeholder: 'Texr Area',
+    width: '250px',
+  },
+}

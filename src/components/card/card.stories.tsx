@@ -28,7 +28,7 @@ export const Light: Story = {
       </p>
     ),
     maxWidth: '300px',
-    variant: 'light',
+    variant: 'light900',
   },
 }
 
@@ -50,7 +50,7 @@ export const Dark: Story = {
       </div>
     ),
     maxWidth: '644px',
-    variant: 'dark',
+    variant: 'dark300',
   },
 }
 

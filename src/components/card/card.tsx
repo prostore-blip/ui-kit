@@ -8,7 +8,7 @@ export type CardProps<T extends ElementType = 'div'> = {
   as?: T
   className?: string
   maxWidth?: string
-  variant?: 'card' | 'dark' | 'light'
+  variant?: 'card' | 'dark100' | 'dark300' | 'dark500' | 'dark700' | 'dark900' | 'light100' | 'light300' | 'light500' | 'light700' | 'light900'
 } & ComponentPropsWithoutRef<T>
 
 export const Card = <T extends ElementType = 'div'>(props: CardProps<T>) => {

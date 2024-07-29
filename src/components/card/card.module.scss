@@ -10,10 +10,42 @@
   border-radius: 2px;
 }
 
-.dark {
+.dark100 {
   background: var(--color-dark-100);
 }
 
-.light {
+.dark300 {
+  background: var(--color-dark-300);
+}
+
+.dark500 {
+  background: var(--color-dark-500);
+}
+
+.dark700 {
+  background: var(--color-dark-700);
+}
+
+.dark900 {
+  background: var(--color-dark-900);
+}
+
+.light100 {
+  background: var(--color-light-100);
+}
+
+.light300 {
+  background: var(--color-light-300);
+}
+
+.light500 {
+  background: var(--color-light-500);
+}
+
+.light700 {
+  background: var(--color-light-700);
+}
+
+.light900 {
   background: var(--color-light-900);
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Tabs } from './tabs'
+import { TabItem, Tabs } from './tabs'
 
 const meta = {
   component: Tabs,
@@ -11,28 +11,38 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const BaseTabBlueWithDisabled: Story = {
+const tabs: TabItem[] = [
+  { title: 'Tab1', value: 'tab1' },
+  { title: 'Tab2', value: 'tab2' },
+  { title: 'Tab3', value: 'tab3' },
+  { title: 'Tab4', value: 'tab4' },
+  { disabled: true, title: 'Tab5', value: 'tab5' },
+]
+
+export const FullWidthControlled: Story = {
   args: {
-    tabs: [
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { disabled: true, title: 'Tabs', value: 'Tabs' },
-    ],
-    variant: 'blue',
+    tabs,
+    value: tabs[2].value,
   },
+  decorators: [
+    Story => (
+      <div style={{ width: '100%' }}>
+        <Story />
+      </div>
+    ),
+  ],
 }
 
-export const BaseTabGreyWithDisabled: Story = {
+export const LimitedWidthUncontrolled: Story = {
   args: {
-    tabs: [
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { title: 'Tabs', value: 'Tabs' },
-      { disabled: true, title: 'Tabs', value: 'Tabs' },
-    ],
-    variant: 'grey',
+    activationMode: 'manual',
+    tabs,
   },
+  decorators: [
+    Story => (
+      <div style={{ width: '500px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 }

@@ -15,12 +15,12 @@ const meta: Meta<typeof TextField> = {
     label: {
       description: 'Label',
     },
-    mandatory: {
-      control: { type: 'boolean' },
-      description: 'If the corresponding form field is mandatory',
-    },
     onValueChange: {
       description: 'The function is used to handle changes in the input field value.',
+    },
+    required: {
+      control: { type: 'boolean' },
+      description: 'If the corresponding form field is mandatory',
     },
     type: {
       control: { type: 'radio' },

@@ -16,6 +16,7 @@ export type TextFieldProps = {
   classNameInput?: string
   error?: string
   label?: string
+  mandatory?: boolean
   onValueChange?: (value: string) => void
   type?: 'email' | 'password' | 'search'
 } & Omit<ComponentPropsWithoutRef<'input'>, 'type'>
@@ -29,6 +30,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       error,
       id,
       label,
+      mandatory = false,
       onKeyDown,
       onValueChange,
       type = 'text',
@@ -69,6 +71,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         {label && (
           <label className={classes.label} htmlFor={id}>
             {label}
+            {mandatory && <span className={s.errorText}>*</span>}
           </label>
         )}
         <div className={s.inputWrapper}>

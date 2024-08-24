@@ -18,6 +18,10 @@ const meta: Meta<typeof TextField> = {
     onValueChange: {
       description: 'The function is used to handle changes in the input field value.',
     },
+    required: {
+      control: { type: 'boolean' },
+      description: 'If the corresponding form field is mandatory',
+    },
     type: {
       control: { type: 'radio' },
       description: 'Current value for controlled text field',

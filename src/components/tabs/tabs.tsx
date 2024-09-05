@@ -37,7 +37,7 @@ export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value, 
           <RadixTabs.Trigger
             className={clsx(
               s.RadixTabsTrigger,
-              tab.disabled || (value && tab.value !== value) ? s.grey : s.blue
+              tab.disabled || (value && tab.value !== value) ? s.grey : s[variant]
             )}
             disabled={tab.disabled}
             key={tab.value}

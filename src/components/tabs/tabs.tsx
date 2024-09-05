@@ -35,7 +35,10 @@ export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value, 
       <RadixTabs.List className={clsx(s.RadixTabsList)}>
         {tabs.map(tab => (
           <RadixTabs.Trigger
-            className={clsx(s.RadixTabsTrigger, s[variant])}
+            className={clsx(
+              s.RadixTabsTrigger,
+              tab.disabled || (value && tab.value !== value) ? s.grey : s.blue
+            )}
             disabled={tab.disabled}
             key={tab.value}
             value={tab.value}

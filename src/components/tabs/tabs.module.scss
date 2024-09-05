@@ -13,10 +13,10 @@
 
   line-height: 150%;
 
+  background: var(--color-dark-700);
   border-top: none;
   border-right: none;
   border-left: none;
-  border-radius: 2.5%;
 
   &:hover {
     cursor: pointer;
@@ -41,7 +41,7 @@
     border-right: 2px solid var(--color-accent-500);
     border-bottom: 2px solid var(--color-accent-500);
     border-left: 2px solid var(--color-accent-500);
-    border-radius: 5%;
+    border-radius: 2%;
   }
 }
 

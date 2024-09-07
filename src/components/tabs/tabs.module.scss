@@ -1,76 +1,81 @@
-.RadixTabsRoot {
+.tabsList {
   display: flex;
-  background: var(--color-dark-700);
+  border: none;
+  outline-color: transparent;
 }
 
-.RadixTabsList {
-}
+.tabsTrigger {
+  overflow: hidden;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
 
-.RadixTabsTrigger {
-  box-sizing: border-box;
-  padding: 6px 24px;
-  padding-bottom: 0;
+  // padding: 6px 23px 24px 6px; ??
+  padding: 6px 23px;
 
-  line-height: 150%;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-dark-100);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
-  border-top: none;
-  border-right: none;
-  border-left: none;
-  border-radius: 2.5%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-dark-100);
+  outline-color: transparent;
+  outline-offset: -1px;
+
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 100ms;
+  transition-property: background-color, color, border-color, outline-color;
 
   &:hover {
     cursor: pointer;
-    background: #73a4ff36;
-    transition: background-color 0.3s ease;
+    background-color: color-mix(in srgb, var(--color-accent-900), transparent 85%);
   }
 
   &:active {
-    padding-bottom: 0;
-    background: #73a4ff4f;
-    border: 1px solid var(--color-accent-500);
-    border-right: 1px solid var(--color-accent-500);
+    background-color: color-mix(in srgb, var(--color-accent-100), transparent 85%);
   }
 
-  &:disabled {
+  &:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--color-accent-500);
+  }
+
+  &[data-state='active'] {
     cursor: default;
-    background: var(--color-dark-700);
-  }
-
-  &:focus {
-    border-top: 2px solid var(--color-accent-500);
-    border-right: 2px solid var(--color-accent-500);
-    border-bottom: 2px solid var(--color-accent-500);
-    border-left: 2px solid var(--color-accent-500);
-    border-radius: 5%;
-  }
-}
-
-.blue {
-  color: var(--color-accent-500);
-  border-bottom: 2px solid var(--color-accent-500);
-
-  &:active {
     color: var(--color-accent-500);
-    border-bottom: 4px solid var(--color-accent-500);
+    border-color: var(--color-accent-500);
   }
 
-  &:disabled {
+  &[data-disabled] {
+    pointer-events: none;
+
     color: var(--color-accent-900);
-    border-bottom: 2px solid var(--color-accent-900);
+
+    background-color: transparent;
+    border-color: var(--color-accent-900);
+    outline-color: transparent;
+  }
+
+  &[data-disabled]:not([data-state='active']) {
+    pointer-events: none;
+
+    color: var(--color-dark-300);
+
+    background-color: transparent;
+    border-color: var(--color-dark-300);
+    outline-color: transparent;
   }
 }
 
-.grey {
-  color: var(--color-dark-100);
-  border-bottom: 2px solid var(--color-dark-100);
+.disabledTab {
+  pointer-events: none;
 
-  &:active {
-    color: var(--color-dark-100);
-    border-bottom: 4px solid var(--color-accent-500);
-  }
+  color: var(--color-dark-300);
 
-  &:disabled {
-    color: var(--color-dark-300);
-    border-bottom: 2px solid var(--color-dark-300);
-  }
+  background-color: transparent;
+  border-color: var(--color-dark-300);
+  outline-color: transparent;
 }

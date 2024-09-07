@@ -1,43 +1,29 @@
-import type { FC } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
 import * as RadixTabs from '@radix-ui/react-tabs'
 import clsx from 'clsx'
 
 import s from './tabs.module.scss'
 
-export type TabType = {
+export type TabItem = {
   disabled?: boolean
   title: string
-  // A unique value that associates the trigger with a content
   value: string
 }
 
 export type TabsProps = {
-  // use when you do not need to control the state of the tabs
-  defaultValue?: string
-  // The value of the tab that should be active when initially rendered
-  // Event handler called when the value changes
-  onValueChange?: (value: string) => void
-  tabs: TabType[]
-  // The controlled value of the tab to activate. Should be used in conjunction with onValueChange
-  value?: string
-  variant: 'blue' | 'grey'
-}
+  tabs: TabItem[]
+} & ComponentPropsWithoutRef<typeof RadixTabs.Root>
 
-export const Tabs: FC<TabsProps> = ({ defaultValue, onValueChange, tabs, value, variant }) => {
+export const Tabs = ({ tabs, ...restProps }: TabsProps) => {
   return (
-    <RadixTabs.Root
-      className={clsx(s.RadixTabsRoot)}
-      defaultValue={defaultValue}
-      onValueChange={onValueChange}
-      value={value}
-    >
-      <RadixTabs.List className={clsx(s.RadixTabsList)}>
+    <RadixTabs.Root {...restProps}>
+      <RadixTabs.List className={clsx(s.tabsList)}>
         {tabs.map(tab => (
           <RadixTabs.Trigger
-            className={clsx(s.RadixTabsTrigger, s[variant])}
+            className={clsx(s.tabsTrigger, tab.disabled && s.disabledTab)}
             disabled={tab.disabled}
-            key={tab.value}
+            key={tab.value + tab.title}
             value={tab.value}
           >
             {tab.title}

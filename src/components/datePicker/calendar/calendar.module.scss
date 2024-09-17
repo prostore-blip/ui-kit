@@ -1,0 +1,160 @@
+.months {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px;
+  border: 1px solid var(--color-dark-300);
+  background-color: var(--color-dark-500);
+  border-radius: 2px;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-dark-100);
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--color-dark-100);
+  }
+
+  & svg {
+    fill: var(--color-light-100);
+  }
+}
+
+.monthCaption {
+  position: absolute;
+  top: 25px;
+  left: 22px;
+}
+
+.dropdowns {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  position: relative;
+}
+
+.dropdown {
+  appearance: none;
+  opacity: 0;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  border-radius: 0;
+  background-color: inherit;
+
+  option {
+    background-color: var(--color-dark-500);
+    border: 1px solid var(--color-dark-100);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-m);
+    color: var(--color-light-900);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-accent-500);
+      background-color: var(--color-dark-300);
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-dark-500);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-dark-100);
+  }
+}
+
+.captionLabel {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  gap: 3px;
+  font-weight: var(--font-weight-bold);
+  font-size:  var(--font-size-m);
+  line-height: var(--line-height-m);
+}
+
+.chevron {
+  cursor: pointer;
+  fill: var(--color-light-100);
+}
+
+.dropdownRoot {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.weekday {
+  color: var(--color-light-900);
+  font-size:  var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-regular);
+  text-align: center;
+  width: 36px;
+  height: 40px;
+  padding-top: 12px ;
+  padding-bottom: 20px;
+}
+
+.day {
+  padding: 6px;
+  text-align: center;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-regular);
+  cursor: pointer;
+  border-radius: 50%;
+
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--color-dark-300);
+    color: var(--color-light-100);
+  }
+}
+
+.weekend {
+  color: var(--color-danger-300);
+}
+
+.today {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-500);
+}
+
+.selected {
+  background-color: var(--color-accent-900);
+  color: var(--color-light-100);
+}
+.dayRangeStart{
+  color: red;
+  background-color: red;
+}
+
+.outside {
+  color: var(--color-light-900);
+}

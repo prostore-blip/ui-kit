@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
-
+import { useArgs } from '@storybook/preview-api'
 import { enUS, ru } from 'date-fns/locale'
 
-import { DatePicker } from '../datePicker/datePicker'
+import { DatePicker } from './datePicker'
 
 const meta = {
   component: DatePicker,
@@ -61,9 +60,11 @@ export const ControlledDatePicker: Story = {
     label: 'Date',
   },
   render: args => {
-    const [date, setDate] = useState<Date | undefined>(args.date)
+    const [{ date }, updateArgs] = useArgs()
 
-    const onSelect = (date: Date | undefined) => setDate(date)
+    const onSelect = (selectedDate: Date | undefined) => {
+      updateArgs({ date: selectedDate })
+    }
 
     return <DatePicker date={date} label={args.label} onSelect={onSelect} />
   },

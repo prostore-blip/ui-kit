@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { useState } from 'react'
 import { DateRange } from 'react-day-picker'
 
+import { useArgs } from '@storybook/preview-api'
 import { enUS, ru } from 'date-fns/locale'
 
 import { DatePickerWithRange } from './datePickerWithRange'
@@ -64,9 +64,11 @@ export const ControlledDatePickerRange: Story = {
     label: 'DateRange',
   },
   render: args => {
-    const [dateRange, setDateRange] = useState<DateRange | undefined>(args.date)
+    const [{ dateRange }, updateArgs] = useArgs()
 
-    const onSelect = (date: DateRange | undefined) => setDateRange(date)
+    const onSelect = (selectedDate: DateRange | undefined) => {
+      updateArgs({ dateRange: selectedDate })
+    }
 
     return <DatePickerWithRange date={dateRange} label={args.label} onSelect={onSelect} />
   },

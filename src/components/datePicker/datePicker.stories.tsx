@@ -57,15 +57,16 @@ export const DisabledDatePicker: Story = {
 export const ControlledDatePicker: Story = {
   args: {
     ...defaultArgs,
+    date: undefined,
     label: 'Date',
   },
-  render: args => {
-    const [{ date }, updateArgs] = useArgs()
+  render: ({ date, onSelect, ...args }) => {
+    const [, updateArgs] = useArgs()
 
-    const onSelect = (selectedDate: Date | undefined) => {
+    const onSelectHandler = (selectedDate: Date | undefined) => {
       updateArgs({ date: selectedDate })
     }
 
-    return <DatePicker date={date} label={args.label} onSelect={onSelect} />
+    return <DatePicker date={date} onSelect={onSelectHandler} {...args} />
   },
 }

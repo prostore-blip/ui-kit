@@ -59,17 +59,26 @@ export const DisabledDatePickerRange: Story = {
 }
 
 export const ControlledDatePickerRange: Story = {
+  argTypes: {
+    date: { control: 'object' },
+  },
   args: {
     ...defaultArgs,
-    label: 'DateRange',
+    captionLayout: 'dropdown',
+    date: {
+      from: new Date(),
+      to: new Date(),
+    },
+    label: 'Date range',
+    placeholder: 'Выберите необходимый диапазон дат',
   },
-  render: args => {
-    const [{ dateRange }, updateArgs] = useArgs()
+  render: ({ date, onSelect, ...args }) => {
+    const [, updateArgs] = useArgs()
 
-    const onSelect = (selectedDate: DateRange | undefined) => {
-      updateArgs({ dateRange: selectedDate })
+    const onSelectHandler = (selectedDate: DateRange | undefined) => {
+      updateArgs({ date: selectedDate })
     }
 
-    return <DatePickerWithRange date={dateRange} label={args.label} onSelect={onSelect} />
+    return <DatePickerWithRange date={date} onSelect={onSelectHandler} {...args} />
   },
 }

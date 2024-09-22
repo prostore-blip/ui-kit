@@ -19,9 +19,11 @@ export type DatePickerWithRangeProps = {
   errorMessage?: string
   label?: string
   onSelect: (date: DateRange | undefined) => void
+  placeholder?: string
 } & Omit<DayPickerProps, 'mode'>
 
 export function DatePickerWithRange({
+  captionLayout,
   className,
   classNames,
   date,
@@ -30,19 +32,20 @@ export function DatePickerWithRange({
   label,
   locale = enUS,
   onSelect,
+  placeholder,
   ...rest
 }: DatePickerWithRangeProps) {
   const [isOpenCalendar, setIsOpenCalendar] = useState(false)
 
   const { dateFormat, defaultText, localeSettings, weekStartsOn } = getLocaleSettings(locale)
 
-  let formattedDate = defaultText
+  let dateFormatted = placeholder || defaultText
 
   if (date?.from) {
     const formattedFrom = format(date.from, dateFormat, { locale: localeSettings })
     const formattedTo = date?.to ? format(date.to, dateFormat, { locale: localeSettings }) : ''
 
-    formattedDate = formattedTo ? `${formattedFrom} - ${formattedTo}` : formattedFrom
+    dateFormatted = formattedTo ? `${formattedFrom} - ${formattedTo}` : formattedFrom
   }
 
   const switchCalendarIcon = isOpenCalendar ? <IconCalendar /> : <IconCalendarOutline />
@@ -58,11 +61,12 @@ export function DatePickerWithRange({
           className={clsx(s.popoverTrigger, errorMessage && s.error)}
           disabled={disabled}
         >
-          {formattedDate}
+          {dateFormatted}
           {switchCalendarIcon}
         </PopoverTrigger>
         <PopoverContent align={'start'}>
           <Calendar
+            captionLayout={captionLayout}
             className={className}
             classNames={classNames}
             defaultMonth={date?.from}

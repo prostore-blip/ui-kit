@@ -19,9 +19,11 @@ export type DatePickerSingleProps = {
   errorMessage?: string
   label?: ReactNode
   onSelect: (date: Date | undefined) => void
+  placeholder?: string
 } & Omit<DayPickerProps, 'mode'>
 
 export function DatePicker({
+  captionLayout,
   className,
   classNames,
   date,
@@ -30,15 +32,19 @@ export function DatePicker({
   label,
   locale = enUS,
   onSelect,
+  placeholder,
   ...rest
 }: DatePickerSingleProps) {
   const [isOpenCalendar, setIsOpenCalendar] = useState(false)
 
+  const { dateFormat, defaultText, localeSettings, weekStartsOn } = getLocaleSettings(locale)
+
+  const dateFormatted = date
+    ? format(date, dateFormat, { locale: localeSettings })
+    : placeholder || defaultText
+
   const switchCalendarIcon = isOpenCalendar ? <IconCalendar /> : <IconCalendarOutline />
   const showError = !!errorMessage && errorMessage.length > 0
-
-  const { dateFormat, defaultText, localeSettings, weekStartsOn } = getLocaleSettings(locale)
-  const dateFormatted = date ? format(date, dateFormat, { locale: localeSettings }) : defaultText
 
   return (
     <div className={clsx(s.gridContainer, className)}>
@@ -57,6 +63,7 @@ export function DatePicker({
         </PopoverTrigger>
         <PopoverContent align={'start'}>
           <Calendar
+            captionLayout={captionLayout}
             className={className}
             classNames={classNames}
             defaultMonth={date}

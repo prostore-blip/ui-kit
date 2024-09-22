@@ -1,6 +1,7 @@
 import { ComponentProps } from 'react'
 import { DayPicker } from 'react-day-picker'
 
+import clsx from 'clsx'
 import { isWeekend } from 'date-fns'
 import { enUS } from 'date-fns/locale'
 
@@ -11,6 +12,7 @@ import { getLocaleSettings } from '../utils/localeSettings'
 export type CalendarProps = ComponentProps<typeof DayPicker>
 
 export function Calendar({
+  captionLayout,
   className,
   classNames,
   locale = enUS,
@@ -21,7 +23,7 @@ export function Calendar({
 
   return (
     <DayPicker
-      captionLayout={'dropdown'}
+      captionLayout={captionLayout}
       className={s.root}
       classNames={{
         button_next: s.navButton,
@@ -33,14 +35,15 @@ export function Calendar({
         dropdown_root: s.dropdownRoot,
         dropdowns: s.dropdowns,
         month: s.month,
-        month_caption: s.monthCaption,
+        month_caption: clsx(captionLayout ? s.monthCaptionWithDropDown : s.monthCaption),
+        month_grid: s.monthGrid,
         months: s.months,
         months_dropdown: s.monthsDropdown,
         nav: s.nav,
         outside: s.outside,
-        range_end: s.rangeEnd,
-        range_middle: s.rangeMiddle,
-        range_start: s.rangeStart,
+        range_end: s.dayRangeEnd,
+        range_middle: s.dayRangeMiddle,
+        range_start: s.dayRangeStart,
         selected: s.selected,
         today: s.today,
         weekday: s.weekday,
@@ -58,4 +61,5 @@ export function Calendar({
     />
   )
 }
+
 Calendar.displayName = 'Calendar'

@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react'
 
+import '@fontsource-variable/inter'
 import '../src/styles/_colors.scss'
 import '../src/styles/_typography.scss'
 import '../src/styles/_boilerplate.scss'

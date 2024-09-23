@@ -16,7 +16,9 @@ type ItemsType = {
 }
 
 export type SelectProps = {
+  className?: string
   disabled?: boolean
+  fullWidth?: boolean
   items: ItemsType[]
   label?: string
   placeholder?: ReactNode | string
@@ -35,7 +37,19 @@ const placeholderWithIcon = (
 )
 
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>(
-  ({ disabled, items, label, placeholder, variant = 'large', ...restProps }: SelectProps, ref) => {
+  (
+    {
+      className,
+      disabled,
+      fullWidth,
+      items,
+      label,
+      placeholder,
+      variant = 'large',
+      ...restProps
+    }: SelectProps,
+    ref
+  ) => {
     const id = useId()
 
     const largePlaceholder =
@@ -54,7 +68,11 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
           </Typography>
         )}
         <SelectRadix.Root disabled={disabled} {...restProps}>
-          <SelectRadix.Trigger aria-label={'Food'} className={s.SelectTrigger} id={id}>
+          <SelectRadix.Trigger
+            aria-label={'Food'}
+            className={clsx(s.SelectTrigger, fullWidth && s.fullWidth, className)}
+            id={id}
+          >
             <SelectRadix.Value placeholder={largePlaceholder} />
 
             <SelectRadix.Icon className={s.SelectIcon}>

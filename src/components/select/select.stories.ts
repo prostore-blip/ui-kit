@@ -55,9 +55,18 @@ export const SelectWithLabelDisabled: Story = {
     label: 'Select-box',
   },
 }
+
 export const SelectWithIcons: Story = {
   args: {
     items: selectItemsWithIcons,
     label: 'Select-box',
+  },
+}
+
+export const SelectFullWidth: Story = {
+  args: {
+    fullWidth: true,
+    items: selectItems,
+    label: 'Select Full Width',
   },
 }

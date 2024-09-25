@@ -9,7 +9,7 @@ const SvgCalendar = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =>
         fill={'none'}
         height={'100%'}
         ref={ref}
-        // viewBox={'0 0 24 24'}
+        viewBox={'0 0 24 24'}
         width={'100%'}
         xmlns={'http://www.w3.org/2000/svg'}
         {...props}

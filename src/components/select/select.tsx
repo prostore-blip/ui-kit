@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import s from './select.module.scss'
 import sItem from './selectItem/selectItem.module.scss'
 
-import { ArrowDown, ArrowTop } from '../../assets/icons/components'
+import { IconArrowDown, IconArrowUp } from '../../assets/icons/components'
 import { Typography } from '../typography'
 import { SelectItem } from './selectItem/selectItem'
 
@@ -76,13 +76,13 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
             <SelectRadix.Value placeholder={largePlaceholder} />
 
             <SelectRadix.Icon className={s.SelectIcon}>
-              <ArrowDown />
+              <IconArrowDown />
             </SelectRadix.Icon>
           </SelectRadix.Trigger>
           <SelectRadix.Portal>
             <SelectRadix.Content className={s.SelectContent} position={'popper'} sideOffset={0}>
               <SelectRadix.ScrollUpButton className={s.SelectScrollButton}>
-                <ArrowTop height={6} width={11} />
+                <IconArrowUp />
               </SelectRadix.ScrollUpButton>
               <SelectRadix.Viewport className={s.SelectViewport}>
                 <SelectRadix.Group>
@@ -101,7 +101,7 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
                 </SelectRadix.Group>
               </SelectRadix.Viewport>
               <SelectRadix.ScrollDownButton className={s.SelectScrollButton}>
-                <ArrowDown />
+                <IconArrowDown />
               </SelectRadix.ScrollDownButton>
             </SelectRadix.Content>
           </SelectRadix.Portal>

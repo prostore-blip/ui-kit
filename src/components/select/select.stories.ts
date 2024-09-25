@@ -13,6 +13,33 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const selectItems = [{ item: '1' }, { item: '2' }, { item: '3' }]
+const selectItemsLargeList = [
+  { item: '1' },
+  { item: '2' },
+  { item: '3' },
+  { item: '4' },
+  { item: '5' },
+  { item: '6' },
+  { item: '7' },
+  { item: '8' },
+  { item: '9' },
+  { item: '10' },
+  { item: '11' },
+  { item: '12' },
+  { item: '13' },
+  { item: '14' },
+  { item: '15' },
+  { item: '16' },
+  { item: '17' },
+  { item: '18' },
+  { item: '19' },
+  { item: '20' },
+  { item: '21' },
+  { item: '22' },
+  { item: '23' },
+  { item: '24' },
+  { item: '25' },
+]
 const selectItemsWithIcons = [
   { icon: Usa(), item: 'English' },
   { icon: Russia(), item: 'Russian' },
@@ -68,5 +95,12 @@ export const SelectFullWidth: Story = {
     fullWidth: true,
     items: selectItems,
     label: 'Select Full Width',
+  },
+}
+
+export const SelectLargeList: Story = {
+  args: {
+    items: selectItemsLargeList,
+    label: 'Select large items list',
   },
 }

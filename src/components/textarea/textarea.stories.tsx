@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>
 export const TextAreaDefault: Story = {
   args: {
     height: '100px',
-    placeholder: 'Texr Area',
+    placeholder: 'Text-area',
     width: '300px',
   },
 }
@@ -22,7 +22,7 @@ export const TextAreaDisablet: Story = {
   args: {
     disabled: true,
     height: '100px',
-    placeholder: 'Texr Area',
+    placeholder: 'Text-area',
     width: '250px',
   },
 }
@@ -31,7 +31,7 @@ export const TextAreaError: Story = {
   args: {
     error: true,
     height: '100px',
-    placeholder: 'Texr Area',
+    placeholder: 'Text-area',
     width: '250px',
   },
 }

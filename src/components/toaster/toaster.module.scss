@@ -1,0 +1,28 @@
+@mixin toast($backGroundColor, $borderColor, $maxWidth) {
+  background: $backGroundColor;
+  border: 1px solid $borderColor;
+  color: var(--color-light-100);
+  border-radius: 2px;
+  max-width: $maxWidth;
+  width: 100%;
+  & button.close {
+    color: var(--color-light-100);
+    padding: 0;
+  }
+}
+
+.toastWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 24px;
+  p {
+    font-family: var(--font-family-primary), serif;
+  }
+}
+
+.succesToast {
+  @include toast(var(--color-success-900), var(--color-success-500), 387px);
+}
+.errorToast {
+  @include toast(var(--color-warning-900), var(--color-warning-500), 427px);
+}

@@ -1,33 +1,71 @@
-.textarea {
-  cursor: pointer;
-  resize: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-light-900);
+}
 
-  padding: 10px;
+.inputContainer {
+  position: relative;
+}
+
+.label {
+  color: var(--color-light-900);
+}
+
+.area {
+  width: 100%;
+  padding: 6px 12px;
+
+  color: var(--color-light-100);
 
   background-color: var(--color-dark-500);
-  border: 1px solid var(--color-dark-100);
-  border-radius: 2%;
+  border: 0;
+  border-radius: 2px;
+  outline: 1px solid var(--color-dark-100);
+  box-shadow: 0 0 7px rgb(0 0 0 / 10%);
 
-  &:focus {
-    border: 1px solid var(--color-info-700);
-    outline: none;
-  }
-
-  &:active {
-    border: 1px solid var(--color-light-100);
-  }
-
-  &:hover {
-    border: 1px solid var(--color-dark-100);
+  &:focus-visible {
+    outline: 2px solid var(--color-accent-500);
   }
 
   &:disabled {
     pointer-events: none;
-    cursor: not-allowed;
-    border: 1px solid var(--color-dark-100);
+    color: var(--color-dark-100);
+
+    &::placeholder {
+      color: var(--color-dark-100);
+    }
+  }
+
+  &:hover:not(:focus) {
+    background-color: transparent;
+    outline: 1px solid var(--color-dark-100);
   }
 }
 
-.error {
-  border: 1px solid var(--color-danger-500);
+.transparent {
+  color: transparent;
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--color-dark-100);
+}
+
+.active {
+  color: var(--color-light-100);
+  outline: 1px solid var(--color-light-100);
+}
+
+.errorInput {
+  color: var(--color-danger-500);
+  outline: 1px solid var(--color-danger-500);
+
+  &::placeholder {
+    color: var(--color-danger);
+  }
+}
+
+.errorText {
+  color: var(--color-danger-500);
 }
